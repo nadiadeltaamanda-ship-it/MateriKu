@@ -27,7 +27,7 @@ public class Materi {
         this.mataKuliah = mataKuliah;
     }
 
-    // ---- getter & setter ----
+
     public int getId() { return id; }
 
     public String getJudul() { return judul; }
@@ -44,7 +44,7 @@ public class Materi {
 
     public ArrayList<String> getCatatan() { return catatan; }
 
-    // ---- method yang akan di-override oleh subclass ----
+
     public String getJenis() { return "Materi Umum"; }
 
     public String getSumber() { return "-"; }
@@ -71,7 +71,7 @@ public class Materi {
         catatan.add(isi);
     }
 
-    // dipakai untuk pencarian berdasarkan judul / kata kunci
+
     public boolean cocokDenganKataKunci(String kataKunci) {
         String kunci = kataKunci.toLowerCase();
         return judul.toLowerCase().contains(kunci)

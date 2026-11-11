@@ -20,10 +20,10 @@ public class ArsipMateri {
 
     public int buatId() { return idBerikutnya++; }
 
-    // ---------- Mata Kuliah ----------
+    //Mata Kuliah
     public boolean tambahMataKuliah(MataKuliah mk) {
         if (cariMataKuliah(mk.getKode()) != null) {
-            return false; // kode sudah dipakai
+            return false;
         }
         daftarMataKuliah.add(mk);
         return true;
@@ -41,13 +41,13 @@ public class ArsipMateri {
     public boolean hapusMataKuliah(String kode) {
         MataKuliah mk = cariMataKuliah(kode);
         if (mk == null) return false;
-        // hapus juga semua materi milik mata kuliah tersebut
+     
         daftarMateri.removeIf(m -> m.getMataKuliah() == mk);
         daftarMataKuliah.remove(mk);
         return true;
     }
 
-    // ---------- Materi ----------
+    //Materi
     public void tambahMateri(Materi m) { daftarMateri.add(m); }
 
     public Materi cariMateriById(int id) {
@@ -73,7 +73,7 @@ public class ArsipMateri {
     }
 
     public ArrayList<Materi> filterMateri(MataKuliah mk, int nomorPertemuan) {
-        // nomorPertemuan = 0 berarti tidak difilter berdasarkan pertemuan
+
         ArrayList<Materi> hasil = new ArrayList<>();
         for (Materi m : daftarMateri) {
             boolean cocokMk = (mk == null) || (m.getMataKuliah() == mk);

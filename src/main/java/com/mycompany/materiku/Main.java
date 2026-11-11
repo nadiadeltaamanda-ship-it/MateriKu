@@ -66,7 +66,6 @@ public class Main {
         input.close();
     }
 
-    // ---------------- Tampilan menu ----------------
     private static void tampilkanMenu() {
         System.out.println("\n========== MENU UTAMA ==========");
         System.out.println("1. Dashboard");
@@ -82,7 +81,6 @@ public class Main {
         System.out.println("================================");
     }
 
-    // ---------------- Helper input Scanner ----------------
     private static String bacaTeks(String prompt) {
         System.out.print(prompt);
         return input.nextLine().trim();
@@ -110,7 +108,7 @@ public class Main {
         }
     }
 
-    // ---------------- 1. Dashboard ----------------
+    //Dashboard 
     private static void tampilkanDashboard() {
         System.out.println("\n----------- DASHBOARD -----------");
         System.out.println("Jumlah mata kuliah   : " + arsip.getDaftarMataKuliah().size());
@@ -129,7 +127,7 @@ public class Main {
         }
     }
 
-    // ---------------- 2. Kelola Mata Kuliah ----------------
+    //Kelola Mata Kuliah 
     private static void menuMataKuliah() {
         boolean kembali = false;
         while (!kembali) {
@@ -205,7 +203,7 @@ public class Main {
         return true;
     }
 
-    // ---------------- 3. Tambah Materi ----------------
+    //Tambah Materi 
     private static void tambahMateri() {
         if (!tampilkanDaftarMataKuliah()) {
             System.out.println("Tambahkan mata kuliah terlebih dahulu (menu 2).");
@@ -248,14 +246,14 @@ public class Main {
         System.out.println("Materi berhasil disimpan dengan ID " + baru.getId() + ".");
     }
 
-    // ---------------- 4. Cari Materi ----------------
+    //Cari Materi
     private static void cariMateri() {
         String kata = bacaTeksWajib("Masukkan judul/kata kunci: ");
         ArrayList<Materi> hasil = arsip.cariMateri(kata);
         tampilkanHasil(hasil);
     }
 
-    // ---------------- 5. Filter Materi ----------------
+    //Filter Materi
     private static void filterMateri() {
         MataKuliah mk = null;
         String kode = bacaTeks("Kode mata kuliah (kosongkan untuk semua): ");
@@ -281,7 +279,7 @@ public class Main {
         }
     }
 
-    // ---------------- 6. Detail Materi ----------------
+    //Detail Materi
     private static void lihatDetailMateri() {
         int id = bacaAngka("Masukkan ID materi: ");
         Materi m = arsip.cariMateriById(id);
@@ -293,7 +291,7 @@ public class Main {
         }
     }
 
-    // ---------------- 7. Ubah Materi ----------------
+    //Ubah Materi
     private static void ubahMateri() {
         int id = bacaAngka("Masukkan ID materi yang diubah: ");
         Materi m = arsip.cariMateriById(id);
@@ -321,7 +319,7 @@ public class Main {
             }
         }
 
-        // perilaku berbeda sesuai subclass
+        
         if (m instanceof MateriFile) {
             MateriFile mf = (MateriFile) m;
             String lokasi = bacaTeks("Lokasi file baru [" + mf.getLokasiFile() + "]: ");
@@ -335,7 +333,7 @@ public class Main {
         System.out.println("Materi berhasil diperbarui.");
     }
 
-    // ---------------- 8. Hapus Materi ----------------
+    //Hapus Materi
     private static void hapusMateri() {
         int id = bacaAngka("Masukkan ID materi yang dihapus: ");
         Materi m = arsip.cariMateriById(id);
@@ -352,7 +350,7 @@ public class Main {
         }
     }
 
-    // ---------------- 9. Catatan Pribadi ----------------
+    //Catatan Pribadi
     private static void tambahCatatan() {
         int id = bacaAngka("Masukkan ID materi: ");
         Materi m = arsip.cariMateriById(id);
